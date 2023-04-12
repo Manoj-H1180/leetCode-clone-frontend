@@ -1,0 +1,132 @@
+.problem-container {
+  height: 97vh;
+  background-color: #282828;
+  background-size: cover;
+  padding-bottom: 33px;
+  color: #fff;
+}
+
+.user-container{
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.language-select{
+  outline: none;
+}
+
+.code-container {
+  width: 600px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  background-color: #282828;
+  padding: 0px 15px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.submitBtn {
+  border: none;
+  border-radius: 4px;
+  background-color: #2db52c;
+  color: #fff;
+  border-radius: 3px;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.progressContainer{
+  border: none;
+  border-radius: 4px;
+  background-color: #2db52c;
+  color: #fff;
+  border-radius: 3px;
+  width: 60px;
+  height: 30px;
+  cursor: not-allowed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.loaderContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  background-color: #282828;
+}
+
+.editor{
+  background-color: #282828;
+}
+
+.questions{
+  height: 100vh;
+  overflow: auto;
+}
+
+.questionInputContainer{
+  background-color: #373737;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.example-title{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.input-title{
+  font-family: Menlo, sans-serif;
+}
+
+span{
+  font-family: Menlo, sans-serif;
+}
+
+.pass{
+  background-color: #2db52c;
+  color: #fff;
+  padding: 4px;
+  background-origin: 3px;
+}
+
+.fail{
+  background-color: red;
+  color: #fff;
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.testResultContainer{
+  height: 150px;
+  overflow: auto;
+}
+
+.testRow{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.testResult{
+  background-color: #373737;
+  color: #fff;
+  margin: 10px 0px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 4px;
+}

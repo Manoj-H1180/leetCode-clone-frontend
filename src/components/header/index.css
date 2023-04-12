@@ -1,0 +1,79 @@
+.logo {
+  width: 200px;
+}
+
+.header {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #696666;
+  position: relative; /* add position relative to the header */
+  align-items: center;
+  background-color: #282828;
+}
+
+.profile-icon {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.pLists {
+  position: absolute; /* add position absolute to the profile list */
+  top: 12%; /* position the profile list below the header */
+  right: 0; /* align the profile list to the right */
+  margin-right: 20px;
+}
+
+.profile-list {
+  border: 1px solid #696666;
+  padding: 10px 10px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: gray;
+  font-weight: 300;
+  width: 80px;
+  margin-top: 5px;
+}
+
+.nav-list {
+  text-decoration: none;
+  color: gray;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  padding: 3px 10px;
+  border-radius: 5px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.nav-list:hover {
+  color: blueviolet;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.logoutBtn {
+  padding: 7px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2db52c;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+.logoutBtnContainer {
+  display: flex;
+}

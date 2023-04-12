@@ -1,0 +1,42 @@
+.dashboard-container {
+  margin: 10 px 20px;
+  
+}
+
+.dContainer{
+  background-color: #282828;
+  background-size: cover;
+  height: 100vh;
+  color: #fff;
+}
+
+.questionsContainer {
+  border: solid 1px #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 20px;
+  border-radius: 4px;
+}
+
+.qRemoveBtn {
+  background-color: #2db52c;
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+
+.q-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

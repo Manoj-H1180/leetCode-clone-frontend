@@ -1,0 +1,12 @@
+.footer-text {
+  gap: 2px;
+  display: flex;
+  align-items: center;
+  background-color: #282828;
+}
+
+.footer-container{
+  background-color: #282828;
+  background-size: cover;
+
+}
