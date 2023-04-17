@@ -19,7 +19,10 @@ const AddQuestions = () => {
     if (title === "" || description === "" || input === "" || output === "")
       return setPopUp("Please Add All The Fields");
     axios
-      .post("http://localhost:4000/admin/questions", questionDetails)
+      .post(
+        "https://leetcode-clone.vercel.app/admin/questions",
+        questionDetails
+      )
       .then(() => setPopUp("Question Added Successfully"))
       .catch(() => setPopUp("Error Adding Question"));
 

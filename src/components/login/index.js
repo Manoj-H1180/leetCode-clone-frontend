@@ -20,7 +20,7 @@ const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    const api = "https://leetcode-backend-nvic.onrender.com/login";
+    const api = "https://leetcode-clone.vercel.app/";
     const options = {
       method: "POST",
       headers: {
@@ -30,6 +30,7 @@ const Login = () => {
     };
     const res = await fetch(api, options);
     const data = await res.json();
+    console.log(res);
     if (res.ok) {
       onLoginSuccess(data.token, data);
     } else {

@@ -17,7 +17,7 @@ const Header = ({ question }) => {
   useEffect(() => {
     async function fetchData() {
       const id = Cookies.get("generalId");
-      const api = `https://leetcode-backend-nvic.onrender.com/users/${id}`;
+      const api = `https://leetcode-clone.vercel.app/users/${id}`;
       const options = {
         method: "GET",
       };

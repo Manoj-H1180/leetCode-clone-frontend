@@ -6,6 +6,8 @@ import { TailSpin } from "react-loader-spinner";
 import CodeMirror from "@uiw/react-codemirror";
 import { dracula } from "@uiw/codemirror-theme-dracula";
 import { langs } from "@uiw/codemirror-extensions-langs";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 import Header from "../../header";
 
@@ -23,7 +25,9 @@ const Problem = () => {
   const [loading, setLoading] = useState(true);
   const [testResults, setTestResults] = useState(null);
   const [loadBtn, setLoadBtn] = useState(false);
-
+  const [popup, setPopUp] = useState("");
+  const notify = () => toast(popup);
+  console.log(popup);
   const { id } = useParams();
 
   setTimeout(() => {
@@ -32,7 +36,7 @@ const Problem = () => {
 
   useEffect(() => {
     axios
-      .get(`https://leetcode-backend-nvic.onrender.com/questions/${id}`)
+      .get(`https://leetcode-clone.vercel.app/questions/${id}`)
       .then(({ data }) => setProblem(data))
       .catch(() => {
         setProblem("Something Went Wrong");
@@ -41,14 +45,15 @@ const Problem = () => {
 
   const runTests = async () => {
     const response = await axios.post(
-      "https://leetcode-backend-nvic.onrender.com/question/submit",
+      "https://leetcode-clone.vercel.app/question/submit",
       {
         problem: problem.problem,
         code,
       }
     );
     setTestResults(response.data.testResults);
-    console.log(response.data.testResults);
+    setPopUp(response.data.testResults[0].pass);
+    notify();
     setLoadBtn(true);
     setTimeout(() => {
       setLoadBtn(false);
@@ -170,6 +175,7 @@ const Problem = () => {
           </div>
         </>
       )}
+      <ToastContainer />
     </div>
   );
 };

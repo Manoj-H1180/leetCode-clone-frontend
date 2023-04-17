@@ -19,7 +19,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const apiUrl = "https://leetcode-backend-nvic.onrender.com/signup";
+    const apiUrl = "https://leetcode-clone.vercel.app/signup";
     const options = {
       method: "POST",
       headers: {

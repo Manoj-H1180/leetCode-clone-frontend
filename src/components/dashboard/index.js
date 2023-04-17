@@ -24,7 +24,7 @@ const Dashboard = () => {
     async function fetchUserDetails() {
       const id = Cookies.get("generalId");
       axios
-        .get(`https://leetcode-backend-nvic.onrender.com/users/${id}`)
+        .get(`https://leetcode-clone.vercel.app/users/${id}`)
         .then(({ data }) => setUId(data));
     }
     fetchUserDetails();
@@ -33,7 +33,7 @@ const Dashboard = () => {
   useEffect(() => {
     async function fetchQuestions() {
       const { data } = await axios.get(
-        "https://leetcode-backend-nvic.onrender.com/questions"
+        "https://leetcode-clone.vercel.app/questions"
       );
       setQuestions(data);
       setTimeout(() => {
@@ -44,9 +44,7 @@ const Dashboard = () => {
   }, []);
 
   const handleRemoveQuestions = async (id) => {
-    await axios.delete(
-      `https://leetcode-backend-nvic.onrender.com/questions/${id}`
-    );
+    await axios.delete(`https://leetcode-clone.vercel.app/questions/${id}`);
     setQuestions(questions.filter((q) => q._id !== id));
     notify();
   };
