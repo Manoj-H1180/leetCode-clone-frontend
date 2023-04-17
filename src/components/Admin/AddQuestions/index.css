@@ -30,3 +30,12 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.difficult-level0container{
+  outline: none;
+  height: 35px;
+  width: 100%;
+}
+.difficult-input-container{
+  margin-bottom: 10px;
+}

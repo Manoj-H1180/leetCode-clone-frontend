@@ -1,13 +1,30 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Header from "../../header";
 import "./index.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const difficultyArray = [
+  {
+    id: 1,
+    title: "Easy",
+  },
+  {
+    id: 2,
+    title: "Medium",
+  },
+  {
+    id: 3,
+    title: "Hard",
+  },
+];
+
 const AddQuestions = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [difficulty, setDifficulty] = useState("");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [popup, setPopUp] = useState("");
@@ -15,7 +32,14 @@ const AddQuestions = () => {
 
   const handleAddQuestion = (e) => {
     e.preventDefault();
-    const questionDetails = { title, description, input, output };
+    const questionDetails = {
+      id: uuidv4(),
+      title,
+      description,
+      input,
+      output,
+      difficulty,
+    };
     if (title === "" || description === "" || input === "" || output === "")
       return setPopUp("Please Add All The Fields");
     axios
@@ -30,6 +54,10 @@ const AddQuestions = () => {
     setDescription("");
     setInput("");
     setOutput("");
+  };
+
+  const difficultLevelChange = (e) => {
+    setDifficulty(e.target.value);
   };
 
   return (
@@ -76,6 +104,18 @@ const AddQuestions = () => {
               placeholder="Enter Output"
               onChange={(e) => setOutput(e.target.value)}
             />
+          </div>
+          <div className="difficult-input-container">
+            <label htmlFor="difficultLevel">Difficulty</label>
+            <select
+              className="difficult-level0container"
+              onChange={difficultLevelChange}
+              value={difficulty}
+            >
+              {difficultyArray.map((e) => {
+                return <option key={e.id}>{e.title}</option>;
+              })}
+            </select>
           </div>
           <div>
             <button type="submit" className="addQuestionBtn" onClick={notify}>
