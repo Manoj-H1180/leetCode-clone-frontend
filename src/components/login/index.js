@@ -20,7 +20,7 @@ const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    const api = "https://leetcode-clone.vercel.app/";
+    const api = "https://leetcode-clone.vercel.app/login";
     const options = {
       method: "POST",
       headers: {
