@@ -8,7 +8,7 @@ const Users = () => {
 
   useEffect(() => {
     async function fetchUsers() {
-      const api = "https://leetcode-backend-nvic.onrender.com/users";
+      const api = "https://leetcode-clone.vercel.app/users";
       const options = {
         method: "GET",
       };
@@ -24,7 +24,7 @@ const Users = () => {
   };
 
   const handleDelete = async () => {
-    const api = `https://leetcode-backend-nvic.onrender.com/users/${userId}`;
+    const api = `https://leetcode-clone.vercel.app/users/${userId}`;
     const options = {
       method: "DELETE",
     };
