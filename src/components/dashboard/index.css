@@ -1,5 +1,5 @@
 .dashboard-container {
-  margin: 10 px 20px;
+  margin: 10px 20px;
   
 }
 
@@ -8,6 +8,7 @@
   background-size: cover;
   height: 100%;
   color: #fff;
+  padding-bottom: 10px;
 }
 
 .questionsContainer {
