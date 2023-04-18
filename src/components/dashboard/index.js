@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Pagination from "../Pagination/pagination.js";
 
 const override: CSSProperties = {
   display: "block",
@@ -17,6 +18,8 @@ const override: CSSProperties = {
 const Dashboard = () => {
   let [loading, setLoading] = useState(true);
   const [questions, setQuestions] = useState([]);
+  const [currentPage, setCurrentPage] = useState(2);
+  const [postsPerPage, setPostsPerPage] = useState(8);
   const [uId, setUId] = useState("");
   const notify = () => toast(() => "Question Deleted");
 
@@ -49,6 +52,10 @@ const Dashboard = () => {
     notify();
   };
 
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPageIndex = lastPostIndex - postsPerPage;
+  const questionsData = questions.slice(firstPageIndex, lastPostIndex);
+
   return (
     <div className="dContainer">
       <Header />
@@ -67,7 +74,7 @@ const Dashboard = () => {
         <>
           <div className="dashboard-container">
             <ul>
-              {questions.map((q) => (
+              {questionsData.map((q) => (
                 <div key={q.id} className="questionsContainer">
                   <div>
                     <h1>{q.title}</h1>
@@ -95,6 +102,12 @@ const Dashboard = () => {
             </ul>
           </div>
           <ToastContainer />
+          <Pagination
+            totalPosts={questions.length}
+            postsPerPage={postsPerPage}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
         </>
       )}
     </div>

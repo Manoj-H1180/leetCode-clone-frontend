@@ -41,7 +41,7 @@ const Problem = () => {
       .catch(() => {
         setProblem("Something Went Wrong");
       });
-  }, []);
+  }, [id]);
 
   const runTests = async () => {
     const response = await axios.post(
@@ -59,6 +59,8 @@ const Problem = () => {
       setLoadBtn(false);
     }, 3000);
   };
+
+  
 
   return (
     <div className="problem-container">
