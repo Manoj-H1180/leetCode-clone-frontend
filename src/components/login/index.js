@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import Cookies from "js-cookie";
 import Footer from "../footer/";
 import { Link } from "react-router-dom";
+import { AiOutlineLoading } from "react-icons/ai";
 
 import "./index.css";
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const onLoginSuccess = (token, data) => {
     Cookies.set("token", token, { expires: 30 });
     Cookies.set("generalId", data.id, { expires: 30 });
     window.location.href = "/dashboard";
+    setIsLoading(false);
   };
 
   const onLoginFailure = (msg) => {
@@ -20,6 +23,7 @@ const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const api = "https://leetcode-clone.vercel.app/login";
     const options = {
       method: "POST",
@@ -30,7 +34,7 @@ const Login = () => {
     };
     const res = await fetch(api, options);
     const data = await res.json();
-    console.log(res);
+
     if (res.ok) {
       onLoginSuccess(data.token, data);
     } else {
@@ -73,8 +77,8 @@ const Login = () => {
             />
           </div>
           <div className="login-btn-container">
-            <button type="submit" className="login-btn">
-              Sign In
+            <button disabled={isLoading} type="submit" className="login-btn">
+              {isLoading ? <AiOutlineLoading className="loader" /> : "Sign In"}
             </button>
           </div>
         </form>

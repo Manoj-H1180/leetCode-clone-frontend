@@ -41,3 +41,8 @@
   align-items: center;
   height: 100vh;
 }
+
+.d-btn-container{
+  display: flex;
+  gap: 20px;
+}

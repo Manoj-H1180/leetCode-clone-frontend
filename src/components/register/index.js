@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineLoading } from "react-icons/ai";
 import "./index.css";
 import Footer from "../footer";
 
@@ -7,10 +8,12 @@ const Register = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const onRegisterSuccessful = (successMsg) => {
     window.location.href = "/dashboard";
     alert(successMsg);
+    setIsLoading(false);
   };
 
   const onRegisterFailure = (message) => {
@@ -19,6 +22,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const apiUrl = "https://leetcode-clone.vercel.app/signup";
     const options = {
       method: "POST",
@@ -71,8 +75,8 @@ const Register = () => {
             />
           </div>
           <div className="r-btn-container">
-            <button type="submit" className="r-btn">
-              Sign Up
+            <button disabled={isLoading} type="submit" className="r-btn">
+              {isLoading ? <AiOutlineLoading className="loader" /> : "Sign In"}
             </button>
           </div>
         </form>

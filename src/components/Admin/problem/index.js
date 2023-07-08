@@ -6,7 +6,7 @@ import { TailSpin } from "react-loader-spinner";
 import CodeMirror from "@uiw/react-codemirror";
 import { dracula } from "@uiw/codemirror-theme-dracula";
 import { langs } from "@uiw/codemirror-extensions-langs";
-import { ToastContainer, toast } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 import Header from "../../header";
@@ -25,9 +25,8 @@ const Problem = () => {
   const [loading, setLoading] = useState(true);
   const [testResults, setTestResults] = useState(null);
   const [loadBtn, setLoadBtn] = useState(false);
-  const [popup, setPopUp] = useState("");
-  const notify = () => toast(popup);
-  console.log(popup);
+  const [showToast, setShowToast] = useState(false);
+
   const { id } = useParams();
 
   setTimeout(() => {
@@ -51,16 +50,27 @@ const Problem = () => {
         code,
       }
     );
+    response?.data?.testResults?.map((result) => {
+      if (result.expectedOutput === result.actualOutput)
+        return setShowToast(true);
+      setShowToast(false);
+    });
+
     setTestResults(response.data.testResults);
-    setPopUp(response.data.testResults[0].pass);
-    notify();
+
     setLoadBtn(true);
     setTimeout(() => {
       setLoadBtn(false);
     }, 3000);
   };
 
-  
+  // useEffect(() => {
+  //   if (showToast) {
+  //     toast.success("Problem Solved");
+  //   } else {
+  //     toast.error("Better luck next time");
+  //   }
+  // }, []);
 
   return (
     <div className="problem-container">
@@ -125,30 +135,33 @@ const Problem = () => {
                   <div>
                     <h3>Test Results:</h3>
                     <ul className="testResultContainer">
-                      {testResults.map((result) => (
-                        <li key={result.input} className="testResult">
-                          <div>Input: {JSON.stringify(result.input)}</div>
-                          <div>
-                            Expected Output:{" "}
-                            {JSON.stringify(result.expectedOutput)}
-                          </div>
-                          <div>
-                            Actual Output: {JSON.stringify(result.actualOutput)}
-                          </div>
-                          <div
-                            className={
-                              result.expectedOutput === result.actualOutput
-                                ? "pass"
-                                : "fail"
-                            }
-                          >
-                            Pass:{" "}
-                            {JSON.stringify(
-                              result.expectedOutput === result.actualOutput
-                            )}
-                          </div>
-                        </li>
-                      ))}
+                      {testResults?.map((result) => {
+                        return (
+                          <li key={result.input} className="testResult">
+                            <div>Input: {JSON.stringify(result.input)}</div>
+                            <div>
+                              Expected Output:{" "}
+                              {JSON.stringify(result.expectedOutput)}
+                            </div>
+                            <div>
+                              Actual Output:{" "}
+                              {JSON.stringify(result.actualOutput)}
+                            </div>
+                            <div
+                              className={
+                                result.expectedOutput === result.actualOutput
+                                  ? "pass"
+                                  : "fail"
+                              }
+                            >
+                              Pass:{" "}
+                              {JSON.stringify(
+                                result.expectedOutput === result.actualOutput
+                              )}
+                            </div>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 )}
@@ -177,7 +190,7 @@ const Problem = () => {
           </div>
         </>
       )}
-      <ToastContainer />
+      <Toaster />
     </div>
   );
 };
