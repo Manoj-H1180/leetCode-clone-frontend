@@ -3,11 +3,12 @@ import { AiOutlineCopyright } from "react-icons/ai";
 import "./index.css";
 
 const Footer = () => {
+  const date = new Date(
   return (
     <div className="footer-container">
       <p className="footer-text">
         <AiOutlineCopyright />
-        2023 CodeHero, All Rights Reserved
+    {`${date.getFullYear() CodeHero, All Rights Reserved}`}
       </p>
     </div>
   );
