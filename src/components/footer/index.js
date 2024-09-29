@@ -8,7 +8,7 @@ const Footer = () => {
     <div className="footer-container">
       <p className="footer-text">
         <AiOutlineCopyright />
-    {`${date.getFullYear() CodeHero, All Rights Reserved}`}
+    {`${date.getFullYear()} CodeHero, All Rights Reserved`}
       </p>
     </div>
   );
